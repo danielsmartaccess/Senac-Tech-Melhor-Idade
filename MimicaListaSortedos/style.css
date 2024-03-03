@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+#termo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.termosSorteados {
+    max-height: 300px; /* Ajuste conforme necessário para a altura máxima */
+    overflow-y: auto; /* Permite rolagem se o conteúdo exceder a altura máxima */
+    width: 200px; /* Ajuste a largura conforme necessário */
+    border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização, ajuste conforme necessário */
+    padding: 5px; /* Espaçamento interno, ajuste conforme necessário */
+    margin-left: 20px; /* Distância do container principal, ajuste conforme necessário */
+}
+
+.termoSorteado {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* Mantém a descrição dentro de uma área fixa com rolagem */
+#descricao {
+    max-height: 150px; /* Ajuste a altura máxima conforme necessário */
+    max-width: 500px; /* Ajuste a largura conforme necessário para largura maxima */
+    overflow-y: auto; /* Permite rolagem vertical se o conteúdo exceder a altura máxima */
+    margin: 10px 0; /* Ajuste conforme necessário para espaçamento */
+    padding: 5px; /* Ajuste conforme necessário para espaçamento interno */
+    border: 1px solid #ccc; /* Adiciona uma borda para melhor visualização do container, ajuste conforme necessário */
+    background-color: #0337ba; /* Cor de fundo suave, ajuste conforme necessário */
+    color: #ffffff; /* Cor do texto, ajuste conforme necessário */
+}

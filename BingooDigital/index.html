@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Digital</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo de estilos CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>Bingo Digital</h2>
+        <!-- Campo e botão para gerar cartelas -->
+        <div class="configuracoes">
+            <input type="number" id="quantidadeCartelas" placeholder="Quantas cartelas?" min="1">
+            <button id="gerarCartelas">Gerar Cartelas</button>
+        </div>
+        <!-- Campo e botão para carregar uma cartela específica pelo código ID -->
+        <div class="configuracoes">
+            <input type="text" id="codigoIdInput" placeholder="Código ID da Cartela">
+            <button id="carregarCartela">Carregar Cartela</button>
+        </div>
+        <!-- Área para exibir a cartela carregada -->
+        <div id="cartela" class="cartela"></div>
+        <!-- Botão para sortear uma nova descrição -->
+        <button id="sortearDescricao">Sortear Descrição</button>
+        <!-- Área para exibir a descrição sorteada -->
+        <div id="descricaoSorteada" class="descricaoSorteada"></div>
+        <!-- Botão e área para exibir os termos sorteados -->
+        <button id="exibirTermosSorteados">Exibir Termos Sorteados</button>
+        <div id="listaTermosSorteados" class="listaTermosSorteados"></div>
+    </div>
+    <script src="script.js"></script> <!-- Link para o arquivo de scripts JavaScript -->
+</body>
+</html>

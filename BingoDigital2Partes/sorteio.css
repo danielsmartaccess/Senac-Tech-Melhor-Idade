@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.descricaoSorteada {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.termosSorteados {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.termoSorteado {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
