@@ -5,6 +5,10 @@ from selenium.webdriver.common.by import By
 import unittest
 import time
 import os
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
 
 class BingoDigitalFunctionalTests(unittest.TestCase):
 
@@ -16,9 +20,6 @@ class BingoDigitalFunctionalTests(unittest.TestCase):
         file_path = os.path.join(current_dir, "index.html")
         self.driver.get("file:///" + file_path)
 
-    def tearDown(self):
-        # Fecha o navegador após cada teste
-        self.driver.quit()
 
     def test_generate_and_display_bingo_cards(self):
         driver = self.driver
@@ -41,12 +42,52 @@ class BingoDigitalFunctionalTests(unittest.TestCase):
         # Verifica se as cartelas foram geradas
         print('Cartelas geradas e exibidas com sucesso')
 
-    def test_load_specific_bingo_card_by_id(self):
+    def test_load_error_bingo_card_by_id(self):
         driver = self.driver
 
         # Insere um código ID de exemplo no campo de input de código ID
         codigo_id_input = driver.find_element(By.ID, 'codigoIdInput')
-        codigo_id_input.send_keys('sampleID')  # Use um ID válido gerado no teste anterior
+        codigo_id_input.send_keys('error')  # Adiciona caracteres para demonstrar o erro
+
+        # Encontra o botão "Carregar Cartela" e clica nele
+        carregar_cartela_button = driver.find_element(By.ID, 'carregarCartela')
+        carregar_cartela_button.click()
+
+        # Espera um pouco para garantir que a cartela seja carregada
+        time.sleep(1)
+
+        # Verifica e aceita o alerta
+        alert = driver.switch_to.alert
+        alert.accept()
+
+        print('Código ID inválido ou cartela não existe.')
+
+    def test_load_bingo_card_by_id(self):
+        driver = self.driver
+        logs = driver.get_log("browser")
+
+        # Encontra o campo de input para quantidade de cartelas e insere o valor 2
+        quantidade_cartelas_input = driver.find_element(By.ID, 'quantidadeCartelas')
+        quantidade_cartelas_input.send_keys('1')
+
+        # Encontra o botão "Gerar Cartelas" e clica nele
+        gerar_cartelas_button = driver.find_element(By.ID, 'gerarCartelas')
+        gerar_cartelas_button.click()
+
+        # Espera um pouco para garantir que o alerta seja exibido
+        time.sleep(1)
+
+        # Verifica e aceita o alerta
+        alert = driver.switch_to.alert
+        alert.accept()
+
+        # Verifica se as cartelas foram geradas
+        print('Cartelas geradas e exibidas com sucesso')
+
+        # Insere um código ID de exemplo no campo de input de código ID
+        codigo_id_input = driver.find_element(By.ID, 'codigoIdInput')
+        for log in logs:
+            print(log)
 
         # Encontra o botão "Carregar Cartela" e clica nele
         carregar_cartela_button = driver.find_element(By.ID, 'carregarCartela')
@@ -61,6 +102,7 @@ class BingoDigitalFunctionalTests(unittest.TestCase):
         self.assertEqual(len(termos), 9)
 
         print('Cartela carregada com sucesso')
+
 
     def test_draw_and_display_description(self):
         driver = self.driver
