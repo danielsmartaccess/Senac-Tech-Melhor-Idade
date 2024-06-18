@@ -143,12 +143,16 @@ document.getElementById('exibirTermosSorteados').addEventListener('click', exibi
 
 // Função para gerar cartelas com termos aleatórios
 function gerarCartelas(qtd) {
+    let cartelaid = "";
     for (let i = 0; i < qtd; i++) {
         const codigoId = gerarCodigoId(); // Gera um código ID único para cada cartela
         cartelas[codigoId] = [...termos].sort(() => 0.5 - Math.random()).slice(0, 9); // Seleciona 9 termos aleatórios para a cartela
         console.log(`Cartela ${i+1}: Código ID - ${codigoId}`); // Exibe o código ID no console para referência
+        cartelaid = codigoId;
     }
+    presentcodigoId(cartelaid);
     alert("Cartelas geradas. Use os códigos ID exibidos no console para carregar uma cartela.");
+    
 }
 
 // Função para mostrar a cartela com base no código ID fornecido
@@ -214,4 +218,11 @@ function exibirTermosSorteados() {
 // Função para gerar um código ID único para cada cartela
 function gerarCodigoId() {
     return Math.random().toString(36).substr(2, 9);
+}
+
+function presentcodigoId(data){
+    document.getElementById('codigoIdInput').value = data;
+    const codigocartela = document.getElementById('codigocartela');
+    codigocartela.innerHTML = data; // Limpa a lista antes de adicionar novos itens
+
 }
